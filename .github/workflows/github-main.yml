@@ -16,6 +16,7 @@ jobs:
         run: |
           echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_ENV
           sudo docker build -t ${{ secrets.DOCKER_USERNAME }}/getting-started:latest .
+          sudo docker tag getting-started ${{ secrets.DOCKER_USERNAME }}/getting-started:latest
           sudo docker push ${{ secrets.DOCKER_USERNAME }}/getting-started:latest
     
   deploy:
